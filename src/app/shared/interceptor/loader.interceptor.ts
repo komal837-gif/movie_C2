@@ -5,7 +5,7 @@ import {
   HttpEvent,
   HttpInterceptor
 } from '@angular/common/http';
-import {  finalize, Observable } from 'rxjs';
+import {  delay, finalize, Observable } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 
 @Injectable()
@@ -13,7 +13,7 @@ export class LoaderInterceptor implements HttpInterceptor {
 
   constructor(private loaderService:AuthService) {}
 
-  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>>{
+  intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>>{
     this.loaderService.loadingState(true)
 
     const reqClone = request.clone({
@@ -25,6 +25,7 @@ export class LoaderInterceptor implements HttpInterceptor {
 
     return next.handle(reqClone)
       .pipe(
+        delay(3000),
         finalize(()=>{
           this.loaderService.loadingState(false)
         })

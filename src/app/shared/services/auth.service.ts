@@ -9,12 +9,11 @@ export class AuthService {
 
   constructor() { }
 
-  emitLoadingState:Subject<boolean> = new Subject<boolean>()
+  emitLoadingState:BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false)
   emitLoadingState$:Observable<boolean>=this.emitLoadingState.asObservable()
 
-  loadingState(state: boolean) {
-
-    this.emitLoadingState.next(state)
+  loadingState(state:boolean) {
+      this.emitLoadingState.next(state)
   
   }
 }
