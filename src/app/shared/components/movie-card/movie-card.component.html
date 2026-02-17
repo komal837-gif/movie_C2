@@ -1,0 +1,18 @@
+
+<div class="card h-100 mb-0">
+    <div class="card-header">
+        <h2 class="m-0 p-0">{{movieObj.title}}</h2>
+    </div>
+    <figure class="mb-0">
+        <img [src]="movieObj.poster" alt="">
+        <figcaption>
+            <h2>{{movieObj.title}}</h2>
+            <strong>director:- {{movieObj.director}}</strong><br>
+            <strong>year:-{{movieObj.year}}</strong><br>
+        </figcaption>
+    </figure>
+    <div class="card-footer d-flex justify-content-between align-items-center">
+        <button (click)="onEdit()" mat-stroked-button color="primary">Edit</button>
+        <button (click)="onRemove()" mat-stroked-button color="warn">Delete</button>
+    </div>
+</div>
