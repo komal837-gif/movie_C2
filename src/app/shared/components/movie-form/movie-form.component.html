@@ -41,6 +41,7 @@
         </div>
         <button type="button"
             class="my-2"
+            [disabled]="cast.invalid"
             mat-stroked-button
             color="primary"
             (click)="addCast()">
@@ -58,7 +59,7 @@
                 </div>
             </div>
         </div>
-         <button  type="button" (click)="addGenre()" mat-stroked-button class="my-2" color="primary">Add genre</button>
+         <button [disabled]="genre.invalid" type="button" (click)="addGenre()" mat-stroked-button class="my-2" color="primary">Add genre</button>
     </div>
 
     <button *ngIf="!isInEditMode" class="btn btn-block" mat-raised-button color="primary">Add Movie</button>
